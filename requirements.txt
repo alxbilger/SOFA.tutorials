@@ -1,3 +1,4 @@
+numpy
 jupyter
 matplotlib
 k3d

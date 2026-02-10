@@ -1,0 +1,8 @@
+name: my-environment
+channels:
+  - emscripten-forge
+dependencies:
+  - xeus-python # A Jupyter kernel for Python
+  - matplotlib
+  - k3d
+  - numpy
