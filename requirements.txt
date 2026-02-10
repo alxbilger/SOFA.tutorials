@@ -1,4 +1,3 @@
 jupyter
 matplotlib
-vedo
 k3d
