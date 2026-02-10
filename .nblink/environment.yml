@@ -1,6 +1,7 @@
 name: my-environment
 channels:
   - emscripten-forge
+  - conda-forge
 dependencies:
   - xeus-python # A Jupyter kernel for Python
   - matplotlib
