@@ -1,5 +1,4 @@
 import jupytext
-import subprocess
 import os
 import Sofa
 import unittest
