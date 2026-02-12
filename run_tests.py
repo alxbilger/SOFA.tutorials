@@ -31,8 +31,6 @@ class MessageHandler(Sofa.Helper.MessageHandler):
             self.num_warnings += 1
 
 
-indentation = " " * 4
-
 class NotebookTest(unittest.TestCase):
     def test_all_notebooks(self):
         for notebook_file in notebook_files:
