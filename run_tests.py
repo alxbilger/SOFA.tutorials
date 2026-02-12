@@ -17,6 +17,7 @@ for root, dirs, files in os.walk('notebook'):
             full_path = os.path.join(abs_root, file)
             notebook_files.append(full_path)
 
+
 class MessageHandler(Sofa.Helper.MessageHandler):
     def __init__(self):
         super().__init__()
@@ -39,16 +40,13 @@ class NotebookTest(unittest.TestCase):
             nb = jupytext.read(notebook_file)
             code = jupytext.writes(nb, fmt="py:percent")
 
-            # transform the code to add a MessageHandler and record number of errors and warnings
-            code = "\n".join([indentation + line for line in code.splitlines() if not line.strip().startswith('#')])
-            code = "with MessageHandler() as msg_handler:\n" + code + "\n" + indentation + "output['num_errors'] = msg_handler.num_errors\n" + indentation + "output['num_warnings'] = msg_handler.num_warnings\n"
-
             with self.subTest(notebook_file=os.path.basename(notebook_file)):
-                output = {"num_errors": 0, "num_warnings": 0}
-                exec(code, {"MessageHandler" : MessageHandler, "output" : output})
 
-                self.assertEqual(output['num_errors'], 0)
-                self.assertEqual(output['num_warnings'], 0)
+                with MessageHandler() as msg_handler:
+
+                    exec(code, {})
+                    self.assertEqual(msg_handler.num_errors, 0)
+                    self.assertEqual(msg_handler.num_warnings, 0)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
