@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/alxbilger/SOFA.tutorials/HEAD)
+
 # SOFA Tutorial Series for Jupyter Notebooks
 
 A progressive learning path for beginners to get started with [SOFA](https://www.sofa-framework.org/) (a physics simulation engine) using Python and Jupyter notebooks.
