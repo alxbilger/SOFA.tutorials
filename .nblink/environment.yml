@@ -2,7 +2,7 @@ name: my-environment
 channels:
   - emscripten-forge
   - conda-forge
-  - https://prefix.dev/channels/sofa-framework
+  - https://prefix.dev/sofa-framework
 dependencies:
   - xeus-python # A Jupyter kernel for Python
   - matplotlib
