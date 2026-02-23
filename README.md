@@ -1,4 +1,5 @@
 [![Binder](https://2i2c.mybinder.org/badge_logo.svg)](https://2i2c.mybinder.org/v2/gh/alxbilger/SOFA.tutorials/HEAD?urlpath=%2Fdoc%2Ftree%2Fnotebook%2F000_config.ipynb)
+[![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.org/github/alxbilger/SOFA.tutorials/blob/master/notebook/000_config.ipynb)
 
 # SOFA Tutorial Series for Jupyter Notebooks
 
