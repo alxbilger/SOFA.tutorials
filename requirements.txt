@@ -4,3 +4,4 @@ matplotlib
 k3d
 jupytext
 unittest
+sympy
