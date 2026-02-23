@@ -4,6 +4,7 @@ channels:
   - conda-forge
   - https://prefix.dev/sofa-framework
 dependencies:
+  - python=3.12
   - xeus-python # A Jupyter kernel for Python
   - matplotlib
   - k3d
