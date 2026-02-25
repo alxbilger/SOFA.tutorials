@@ -5,6 +5,8 @@ channels:
 dependencies:
   - python=3.12
   - matplotlib
+  - bokeh
+  - jupyter_bokeh
   - k3d
   - numpy
   - sympy

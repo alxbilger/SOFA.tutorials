@@ -1,6 +1,8 @@
 numpy
 jupyter
 matplotlib
+bokeh
+jupyter_bokeh
 k3d
 jupytext
 unittest
