@@ -1,107 +1,130 @@
 [![Binder](https://2i2c.mybinder.org/badge_logo.svg)](https://2i2c.mybinder.org/v2/gh/alxbilger/SOFA.tutorials/HEAD?urlpath=%2Fdoc%2Ftree%2Fnotebook%2F000_config.ipynb)
 [![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.org/github/alxbilger/SOFA.tutorials/blob/master/notebook/000_config.ipynb)
 
-# SOFA Tutorial Series for Jupyter Notebooks
+# SOFA Tutorials (Jupyter Notebooks)
 
-A progressive learning path for beginners to get started with [SOFA](https://www.sofa-framework.org/) (a physics simulation engine) using Python and Jupyter notebooks.
+A progressive learning path to get started with [SOFA](https://www.sofa-framework.org/) — a physics simulation engine — using Python in Jupyter notebooks.
 
-## How to use this repository
+## Table of Contents
+- What this repository contains
+- Use online (Binder / nbviewer)
+- Run locally (clone and install)
+- Installation options (pip, virtualenv, conda)
+- Getting started (launch notebooks)
+- Troubleshooting
+- Contributing and feedback
 
-### Online
+## What this repository contains
+This repository hosts a curated sequence of Jupyter notebooks that introduce SOFA concepts step by step, from initial setup to simple simulations and visualization. The notebooks are designed to be run interactively.
 
-This notebook is available online using Binder:
+## Use online
+You can view or run the notebooks online:
 
-[![Binder](https://2i2c.mybinder.org/badge_logo.svg)](https://2i2c.mybinder.org/v2/gh/alxbilger/SOFA.tutorials/HEAD?urlpath=%2Fdoc%2Ftree%2Fnotebook%2F000_config.ipynb)
+- Interactive (Binder):
+  [![Binder](https://2i2c.mybinder.org/badge_logo.svg)](https://2i2c.mybinder.org/v2/gh/alxbilger/SOFA.tutorials/HEAD?urlpath=%2Fdoc%2Ftree%2Fnotebook%2F000_config.ipynb)
 
-This notebook is also available online (without interaction) using nbviewer:
+- Read-only (nbviewer):
+  [![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.org/github/alxbilger/SOFA.tutorials/blob/master/notebook/000_config.ipynb)
 
-[![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.org/github/alxbilger/SOFA.tutorials/blob/master/notebook/000_config.ipynb)
-
-### Clone this repository
-
-If you want to run the notebooks locally, clone this repository.
+## Run locally
+If you prefer running the notebooks on your machine:
 
 ```bash
 git clone https://github.com/alxbilger/SOFA.tutorials.git
+cd SOFA.tutorials
 ```
 
-Then, follow the instructions below to install the dependencies and run the notebooks.
+Then choose one of the installation options below and follow "Getting started".
 
-## Install dependencies
+## Installation options
 
-### Pip 
+### Option A — Pip (system Python or virtualenv)
+Install Python packages from `requirements.txt`:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-It will install all the dependencies except SOFA. SOFA remains to be installed manually. See [SOFA installation guide](https://sofa-framework.github.io/doc/getting-started/binaries/binaries-instructions/).
+Note: this installs Python dependencies only. You still need a working SOFA installation separately. See the official [SOFA installation guide](https://sofa-framework.github.io/doc/getting-started/binaries/binaries-instructions/).
 
-### Virtual Environment
+### Option B — Virtual environment (recommended)
+Using a virtual environment avoids conflicts with other Python packages.
 
-It is recommended to use a virtual environment to avoid conflicts with other Python packages.
+- Windows (PowerShell):
+  ```bash
+  python -m venv .venv
+  .venv\Scripts\Activate.ps1
+  python -m pip install --upgrade pip
+  pip install -r requirements.txt
+  ```
 
-#### Windows (PowerShell)
+- Windows (cmd.exe):
+  ```batch
+  python -m venv .venv
+  .venv\Scripts\activate.bat
+  python -m pip install --upgrade pip
+  pip install -r requirements.txt
+  ```
 
-```bash
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
+- macOS / Linux (bash/zsh):
+  ```bash
+  python -m venv .venv
+  source .venv/bin/activate
+  python -m pip install --upgrade pip
+  pip install -r requirements.txt
+  ```
 
-#### Windows (batch)
+Reminder: SOFA itself is not installed by `requirements.txt`. Install SOFA separately if you use pip/virtualenv.
 
-```batch
-python -m venv .venv
-.venv\Scripts\activate.bat
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
+### Option C — Conda (includes SOFA bindings)
+This method creates an isolated Conda environment and installs Python dependencies plus the `sofa-python3` package from the SOFA channel.
 
-#### macOS / Linux (bash/zsh)
+Prerequisite: Conda must be installed and available on your PATH.
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-```
-
-### Conda
-
-This method provides an isolated environment with all the dependencies, including SOFA.
-Conda command line must be available.
-
-1. Create the environment from the environment.yml file:
-
+1) Create the environment from `environment.yml`:
 ```bash
 conda env create -f environment.yml
 ```
 
-2. Activate the environment:
-
+2) Activate it (the default name is `my-environment`):
 ```bash
 conda activate my-environment
 ```
 
-3. Verify that the new environment was installed correctly:
-
+3) Verify it appears in your environment list:
 ```bash
 conda env list
 ```
 
-## Getting Started
-
-Run notebooks with:
+If you run into issues importing SOFA in notebooks, confirm that `sofa-python3` is present:
 ```bash
-# make sure jupyter is in your PATH variable
+conda list | findstr /I sofa-python3   # Windows (PowerShell/cmd)
+# or
+conda list | grep -i sofa-python3      # macOS/Linux
+```
+
+## Getting started
+Launch Jupyter from the project root:
+```bash
+# ensure "jupyter" is on your PATH (activating your env usually provides it)
 jupyter notebook
 ```
 Alternative:
-```
+```bash
 python -m jupyter notebook
 ```
 
-Or execute cells directly in VS Cod[e|ium] or JupyterLab.
+You can also open and run the notebooks in VS Code / VSCodium or JupyterLab.
 
-Progress through the notebooks sequentially
+Progress through the notebooks sequentially, starting with `notebook/000_config.ipynb`.
+
+## Troubleshooting
+- ImportError related to SOFA or `sofa-python3`:
+  - If you used pip/virtualenv, ensure you installed SOFA separately and that the Python bindings are accessible.
+  - If you used Conda, ensure `sofa-python3` is installed (see the check above) and that you activated the correct environment.
+- Jupyter not found: confirm your environment is activated and `jupyter` is installed (`pip show jupyter` or `conda list jupyter`).
+- Rendering issues with 3D widgets (e.g., `k3d`, `bokeh`): verify the corresponding packages are installed and that your browser supports WebGL.
+
+## Contributing and feedback
+- Contributions (fixes, improvements, new notebooks) are welcome. Feel free to open issues or pull requests.
+- If you notice broken links or installation problems, please open an issue with details about your OS and environment.
