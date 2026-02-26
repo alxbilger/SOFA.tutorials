@@ -125,6 +125,13 @@ Progress through the notebooks sequentially, starting with `notebook/000_config.
 - Jupyter not found: confirm your environment is activated and `jupyter` is installed (`pip show jupyter` or `conda list jupyter`).
 - Rendering issues with 3D widgets (e.g., `k3d`, `bokeh`): verify the corresponding packages are installed and that your browser supports WebGL.
 
+## Tests
+
+Run the test suite from the project root:
+```bash
+python -m unittest tests.run_tests -v
+```
+
 ## Contributing and feedback
 - Contributions (fixes, improvements, new notebooks) are welcome. Feel free to open issues or pull requests.
 - If you notice broken links or installation problems, please open an issue with details about your OS and environment.
