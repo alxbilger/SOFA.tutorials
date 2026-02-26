@@ -38,7 +38,34 @@ Then choose one of the installation options below and follow "Getting started".
 
 ## Installation options
 
-### Option A — Pip (system Python or virtualenv)
+### Option A — Conda (includes SOFA bindings)
+This method creates an isolated Conda environment and installs Python dependencies plus the `sofa-python3` package from the SOFA channel.
+
+Prerequisite: Conda must be installed and available on your PATH.
+
+1) Create the environment from `environment.yml`:
+```bash
+conda env create -f environment.yml
+```
+
+2) Activate it (the default name is `my-environment`):
+```bash
+conda activate my-environment
+```
+
+3) Verify it appears in your environment list:
+```bash
+conda env list
+```
+
+If you run into issues importing SOFA in notebooks, confirm that `sofa-python3` is present:
+```bash
+conda list | findstr /I sofa-python3   # Windows (PowerShell/cmd)
+# or
+conda list | grep -i sofa-python3      # macOS/Linux
+```
+
+### Option B — Pip (system Python or virtualenv)
 Install Python packages from `requirements.txt`:
 
 ```bash
@@ -47,7 +74,7 @@ pip install -r requirements.txt
 
 Note: this installs Python dependencies only. You still need a working SOFA installation separately. See the official [SOFA installation guide](https://sofa-framework.github.io/doc/getting-started/binaries/binaries-instructions/).
 
-### Option B — Virtual environment (recommended)
+### Option C — Virtual environment
 Using a virtual environment avoids conflicts with other Python packages.
 
 - Windows (PowerShell):
@@ -75,33 +102,6 @@ Using a virtual environment avoids conflicts with other Python packages.
   ```
 
 Reminder: SOFA itself is not installed by `requirements.txt`. Install SOFA separately if you use pip/virtualenv.
-
-### Option C — Conda (includes SOFA bindings)
-This method creates an isolated Conda environment and installs Python dependencies plus the `sofa-python3` package from the SOFA channel.
-
-Prerequisite: Conda must be installed and available on your PATH.
-
-1) Create the environment from `environment.yml`:
-```bash
-conda env create -f environment.yml
-```
-
-2) Activate it (the default name is `my-environment`):
-```bash
-conda activate my-environment
-```
-
-3) Verify it appears in your environment list:
-```bash
-conda env list
-```
-
-If you run into issues importing SOFA in notebooks, confirm that `sofa-python3` is present:
-```bash
-conda list | findstr /I sofa-python3   # Windows (PowerShell/cmd)
-# or
-conda list | grep -i sofa-python3      # macOS/Linux
-```
 
 ## Getting started
 Launch Jupyter from the project root:
