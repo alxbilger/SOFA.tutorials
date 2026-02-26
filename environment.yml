@@ -4,6 +4,7 @@ channels:
   - https://prefix.dev/sofa-framework
 dependencies:
   - python=3.12
+  - jupyter
   - matplotlib
   - bokeh
   - jupyter_bokeh
