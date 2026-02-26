@@ -17,7 +17,7 @@ def run_notebook(notebook_path: str) -> tuple[int, int]:
         }
 
         # WARNING: message handlers may be cleared by the execution of the code, preventing
-        # the counters of errors.
+        # the counting the errors.
         exec(code, globals_dict)
 
         num_errors = msg_handler.num_errors

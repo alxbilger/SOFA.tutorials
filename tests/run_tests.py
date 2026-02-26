@@ -37,8 +37,8 @@ class NotebookTest(unittest.TestCase):
                 except Exception as e:
                     self.fail(f"Execution failed in {notebook_file}: {str(e)}")
 
-                self.assertEqual(num_errors, 0)
-                self.assertEqual(num_warnings, 0)
+                self.assertEqual(num_errors, 0, f"Found {num_errors} SOFA errors in {notebook_file}")
+                self.assertEqual(num_warnings, 0, f"Found {num_warnings} SOFA warnings in {notebook_file}")
 
 
 if __name__ == "__main__":
