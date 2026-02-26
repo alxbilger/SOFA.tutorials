@@ -11,44 +11,11 @@ Features:
 - Executes converted code with error/warning tracking
 - Provides comprehensive test coverage
 - Skip code cells with tag 'active-ipynb'
-
-Dependencies:
-- jupytext: For converting between Jupyter notebook and Python code formats
-- Sofa (Sofa.Helper.MessageHandler): For capturing execution messages
 """
 
-import jupytext
 import os
 import unittest
-from message_handler import MessageHandler
-
-
-def _find_notebooks(directory: str) -> list[str]:
-    """
-    Recursively find all .ipynb files in the specified directory.
-
-    Args:
-        directory (str): Path to search for notebooks
-
-    Returns:
-        list[str]: A list containing absolute filesystem paths of all found Jupyter notebook (.ipynb)
-    """
-    notebook_files = []
-
-    for root, dirs, files in os.walk(directory):
-        abs_root = os.path.abspath(root)
-
-        # exclude temp folder
-        if '.ipynb_checkpoints' in dirs:
-            dirs.remove('.ipynb_checkpoints')
-
-        for file in files:
-            if (file.endswith('.ipynb')):
-                full_path = os.path.join(abs_root, file)
-                notebook_files.append(full_path)
-
-    return notebook_files
-
+from notebook_validation import find_notebooks, notebook_runner
 
 class NotebookTest(unittest.TestCase):
     """
@@ -58,27 +25,20 @@ class NotebookTest(unittest.TestCase):
     """
 
     def test_all_notebooks(self):
-        notebook_files = _find_notebooks('notebook')
+        notebook_files = find_notebooks.find_notebooks('notebooks')
+        print(f"Found {len(notebook_files)} notebooks in 'notebooks' directory")
+        self.assertTrue(len(notebook_files) > 0, "No notebooks found in 'notebooks' directory")
         for notebook_file in notebook_files:
             print(f"Reading notebook {notebook_file}")
 
-            # Convert notebook to Python format
-            # Note that some cells from the notebook can be skiped if they are tagged 'active-ipynb'. This is useful to skip steps with a GUI
-            nb = jupytext.read(notebook_file)
-            code = jupytext.writes(nb, fmt="py:percent")
-
             with self.subTest(notebook_file=os.path.basename(notebook_file)):
-                # Execute code with message handler capturing errors/warnings
-                with MessageHandler() as msg_handler:
+                try:
+                    num_errors, num_warnings = notebook_runner.run_notebook(notebook_file)
+                except Exception as e:
+                    self.fail(f"Execution failed in {notebook_file}: {str(e)}")
 
-                    try:
-                        exec(code, {})
-                    except Exception as e:
-                        self.fail(f"Execution failed in {notebook_file}: {str(e)}")
-
-                    # Verify no execution errors or warnings occurred
-                    self.assertEqual(msg_handler.num_errors, 0)
-                    self.assertEqual(msg_handler.num_warnings, 0)
+                self.assertEqual(num_errors, 0)
+                self.assertEqual(num_warnings, 0)
 
 
 if __name__ == "__main__":
