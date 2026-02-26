@@ -107,11 +107,11 @@ Reminder: SOFA itself is not installed by `requirements.txt`. Install SOFA separ
 Launch Jupyter from the project root:
 ```bash
 # ensure "jupyter" is on your PATH (activating your env usually provides it)
-jupyter notebook
+jupyter notebooks
 ```
 Alternative:
 ```bash
-python -m jupyter notebook
+python -m jupyter notebooks
 ```
 
 You can also open and run the notebooks in VS Code / VSCodium or JupyterLab.
