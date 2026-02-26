@@ -33,12 +33,11 @@ class NotebookTest(unittest.TestCase):
 
             with self.subTest(notebook_file=os.path.basename(notebook_file)):
                 try:
-                    num_errors, num_warnings = notebook_runner.run_notebook(notebook_file)
+                    error_list = notebook_runner.run_notebook(notebook_file)
                 except Exception as e:
                     self.fail(f"Execution failed in {notebook_file}: {str(e)}")
 
-                self.assertEqual(num_errors, 0, f"Found {num_errors} SOFA errors in {notebook_file}")
-                self.assertEqual(num_warnings, 0, f"Found {num_warnings} SOFA warnings in {notebook_file}")
+                self.assertEqual(len(error_list), 0, f"Found {len(error_list)} SOFA errors in {notebook_file}:\n{error_list}")
 
 
 if __name__ == "__main__":

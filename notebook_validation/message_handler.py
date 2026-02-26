@@ -8,13 +8,11 @@ class MessageHandler(Sofa.Helper.MessageHandler):
     """
 
     def __init__(self):
-        """Initialize the message handler with counters for errors and warnings."""
+        """Initialize the message handler with list for errors and warnings."""
         super().__init__()
-        self.num_errors = 0
-        self.num_warnings = 0
+        self.error_list = []
+        self.warning_list = []
 
     def process(self, msg):
-        if msg["type"]=="Error":
-            self.num_errors += 1
-        elif msg["type"]=="Warning":
-            self.num_warnings += 1
+        if msg["type"]=="Error" or msg["type"]=="Warning":
+            self.error_list.append("[" + str(msg["sender"] or "") + "] " + "[" + str(msg["component"] or "") + "] " + str(msg["message"] or ""))
