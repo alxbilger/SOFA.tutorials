@@ -14,10 +14,18 @@ A progressive learning path to get started with [SOFA](https://www.sofa-framewor
 - [Getting started (launch notebooks)](#getting-started)
 - [Troubleshooting](#troubleshooting)
 - [Tests](#tests)
+- [How to create new notebooks](#how-to-create-new-notebooks)
 - [Contributing and feedback](#contributing-and-feedback)
 
 ## What this repository contains
 This repository hosts a curated sequence of Jupyter notebooks that introduce SOFA concepts step by step, from initial setup to simple simulations and visualization. The notebooks are designed to be run interactively.
+
+### Notebook Validation
+The repository also includes a **Notebook Validation System** to ensure the notebooks remain functional. The test suite:
+- Scans the `notebooks` directory for all `.ipynb` files.
+- Converts notebooks to Python scripts using `jupytext`.
+- Executes the converted scripts and tracks any SOFA-related errors or warnings.
+- Skips code cells with the `active-ipynb` tag (typically used for interactive-only elements).
 
 ## Use online
 You can view or run the notebooks online:
@@ -133,6 +141,19 @@ Run the test suite from the project root:
 ```bash
 python -m unittest tests.run_tests -v
 ```
+
+## How to create new notebooks
+
+If you wish to add a new tutorial notebook:
+1. Place the new `.ipynb` file in the `notebooks/` directory.
+2. Follow the naming convention: `XXX_name.ipynb` (e.g., `140_new_feature.ipynb`).
+3. **Interactive elements**: If your notebook includes interactive-only cells (like UI buttons or 3D widgets) that would fail in a non-interactive script execution, you **must tag these cells** with `active-ipynb`.
+   - To add a tag in Jupyter: Select the cell, open the "Cell Toolbar" -> "Tags", and add `active-ipynb`.
+   - These cells will be automatically skipped by the [Notebook Validation System](#notebook-validation) during tests.
+4. **Verify your notebook**: Before submitting, ensure your notebook passes the validation suite:
+   ```bash
+   python -m unittest tests.run_tests -v
+   ```
 
 ## Contributing and feedback
 - Contributions (fixes, improvements, new notebooks) are welcome. Feel free to open issues or pull requests.
