@@ -25,7 +25,14 @@ class NotebookTest(unittest.TestCase):
     """
 
     def test_all_notebooks(self):
-        notebook_files = find_notebooks.find_notebooks('notebooks')
+        exclude_file = 'tests/excluded_notebooks.txt'
+        exclude_list = []
+        if os.path.exists(exclude_file):
+            with open(exclude_file, 'r') as f:
+                exclude_list = [line.strip() for line in f if line.strip()]
+            print(f"Excluding notebooks from {exclude_file}: {exclude_list}")
+
+        notebook_files = find_notebooks.find_notebooks('notebooks', exclude=exclude_list)
         print(f"Found {len(notebook_files)} notebooks in 'notebooks' directory")
         self.assertTrue(len(notebook_files) > 0, "No notebooks found in 'notebooks' directory")
         for notebook_file in notebook_files:
