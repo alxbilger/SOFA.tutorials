@@ -12,6 +12,7 @@ dependencies:
   - k3d
   - pyvista
   - trame
+  - vtk
   - numpy
   - sympy
   - sofa-python3
