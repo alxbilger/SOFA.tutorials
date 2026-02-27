@@ -10,6 +10,7 @@ dependencies:
   - bokeh
   - jupyter_bokeh
   - k3d
+  - pyvista[all,trame]
   - numpy
   - sympy
   - sofa-python3

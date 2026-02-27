@@ -4,5 +4,6 @@ matplotlib
 bokeh
 jupyter_bokeh
 k3d
+pyvista[all,trame]
 jupytext
 sympy
