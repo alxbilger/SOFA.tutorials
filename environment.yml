@@ -13,3 +13,6 @@ dependencies:
   - numpy
   - sympy
   - sofa-python3
+  - sofa-glfw
+  - sofa-softrobots
+  - sofa-softrobotsinverse
