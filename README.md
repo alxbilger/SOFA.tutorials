@@ -7,14 +7,14 @@
 A progressive learning path to get started with [SOFA](https://www.sofa-framework.org/) — a physics simulation engine — using Python in Jupyter notebooks.
 
 ## Table of Contents
-- What this repository contains
-- Use online (Binder / nbviewer)
-- Run locally (clone and install)
-- Installation options (pip, virtualenv, conda)
-- Getting started (launch notebooks)
-- Troubleshooting
-- Tests
-- Contributing and feedback
+- [What this repository contains](#what-this-repository-contains)
+- [Use online (Binder / nbviewer)](#use-online)
+- [Run locally (clone and install)](#run-locally)
+- [Installation options](#installation-options) ([conda](#option-a--conda-includes-sofa-bindings), [pip](#option-b--pip-system-python-or-virtualenv), [virtualenv](#option-c--virtual-environment))
+- [Getting started (launch notebooks)](#getting-started)
+- [Troubleshooting](#troubleshooting)
+- [Tests](#tests)
+- [Contributing and feedback](#contributing-and-feedback)
 
 ## What this repository contains
 This repository hosts a curated sequence of Jupyter notebooks that introduce SOFA concepts step by step, from initial setup to simple simulations and visualization. The notebooks are designed to be run interactively.
