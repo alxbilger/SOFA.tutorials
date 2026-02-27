@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  # Trigger the workflow on push or pull request to master and main branches
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        # shell: bash -el {0}
+        # -e: Exit immediately if a command exits with a non-zero status.
+        # -l: Make bash act as if it had been invoked as a login shell. 
+        #     This is crucial for Conda to ensure the environment is correctly initialized 
+        #     and the 'conda' command is available in each step.
+        # {0}: Placeholder for the script to be executed.
+        shell: bash -el {0}
+
+    steps:
+      # Checkout the repository's source code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Install Conda and set up the environment using environment.yml
+      - name: Setup Conda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: environment.yml
+          activate-environment: my-environment
+          auto-activate: false
+
+      # Run the test suite using Python's unittest module
+      - name: Run tests
+        run: |
+          python -m unittest tests.run_tests -v
