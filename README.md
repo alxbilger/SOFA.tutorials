@@ -13,6 +13,7 @@ A progressive learning path to get started with [SOFA](https://www.sofa-framewor
 - Installation options (pip, virtualenv, conda)
 - Getting started (launch notebooks)
 - Troubleshooting
+- Tests
 - Contributing and feedback
 
 ## What this repository contains
