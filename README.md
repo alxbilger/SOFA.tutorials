@@ -132,6 +132,7 @@ Alternatively, you can open the notebooks directly in **VS Code** (with the Jupy
 - **`ImportError` related to `Sofa`**:
   - **Pip/Virtualenv**: Ensure SOFA is installed separately and that its `site-packages` are in your `PYTHONPATH`.
   - **Conda**: Verify the environment is activated and `sofa-python3` is listed in `conda list`.
+  - **Environment Variables**: Check if the `PYTHONPATH` environment variable is set. It may create conflicts if SOFA is installed elsewhere on your machine (e.g., if you have another SOFA version in your system path).
 - **`jupyter` command not found**: Ensure your environment is activated. If it still fails, install it via `pip install jupyter` or `conda install jupyter`.
 - **3D widgets not rendering (e.g., `k3d`, `bokeh`)**:
   - Ensure your browser supports WebGL.
