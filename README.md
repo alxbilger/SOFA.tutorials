@@ -1,4 +1,3 @@
-[![Binder](https://2i2c.mybinder.org/badge_logo.svg)](https://2i2c.mybinder.org/v2/gh/alxbilger/SOFA.tutorials/HEAD?urlpath=%2Fdoc%2Ftree%2Fnotebooks%2F000_config.ipynb)
 [![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.org/github/alxbilger/SOFA.tutorials/blob/master/notebooks/000_config.ipynb)
 [![CI](https://github.com/alxbilger/SOFA.tutorials/actions/workflows/ci.yml/badge.svg)](https://github.com/alxbilger/SOFA.tutorials/actions/workflows/ci.yml)
 
@@ -8,7 +7,7 @@ A progressive learning path to get started with [SOFA](https://www.sofa-framewor
 
 ## Table of Contents
 - [What this repository contains](#what-this-repository-contains)
-- [Try it online (Binder / nbviewer)](#try-it-online)
+- [View it online (nbviewer)](#try-it-online)
 - [Run locally (Clone and Install)](#run-locally)
 - [Installation options](#installation-options) ([Conda](#option-a--conda-recommended), [Pip](#option-b--pip-system-python-or-virtualenv))
 - [Getting started (launching notebooks)](#getting-started)
@@ -29,9 +28,6 @@ To ensure the tutorials remain functional as SOFA evolves, this repository inclu
 
 ## Try it online
 The easiest way to explore these tutorials without installing anything is to use the online options:
-
-- **Interactive (Binder)**: Launch an interactive environment where you can run and modify the notebooks.
-  [![Binder](https://2i2c.mybinder.org/badge_logo.svg)](https://2i2c.mybinder.org/v2/gh/alxbilger/SOFA.tutorials/HEAD?urlpath=%2Fdoc%2Ftree%2Fnotebooks%2F000_config.ipynb)
 
 - **Read-only (nbviewer)**: Quickly view the notebooks and their outputs without running them.
   [![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.org/github/alxbilger/SOFA.tutorials/blob/master/notebooks/000_config.ipynb)
