@@ -7,9 +7,9 @@ A progressive learning path to get started with [SOFA](https://www.sofa-framewor
 
 ## Table of Contents
 - [What this repository contains](#what-this-repository-contains)
-- [View it online (nbviewer)](#try-it-online)
+- [Try it online (nbviewer)](#try-it-online)
 - [Run locally (Clone and Install)](#run-locally)
-- [Installation options](#installation-options) ([Conda](#option-a--conda-recommended), [Pip](#option-b--pip-system-python-or-virtualenv))
+- [Installation options](#installation-options) ([Pixi](#option-a--pixi-recommended), [Conda](#option-b--conda), [Pip](#option-c--pip-system-python-or-virtualenv))
 - [Getting started (launching notebooks)](#getting-started)
 - [Troubleshooting](#troubleshooting)
 - [Tests](#tests)
@@ -32,7 +32,11 @@ The easiest way to explore these tutorials without installing anything is to use
 - **Read-only (nbviewer)**: Quickly view the notebooks and their outputs without running them.
   [![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.org/github/alxbilger/SOFA.tutorials/blob/master/notebooks/000_config.ipynb)
 
+
+
 ## Run locally
+
+### Clone the repository
 If you want to run the notebooks on your machine, first clone the repository:
 
 ```bash
@@ -40,11 +44,39 @@ git clone https://github.com/alxbilger/SOFA.tutorials.git
 cd SOFA.tutorials
 ```
 
+**Prerequisite**: `git` must be installed.
+
 ### Installation options
 
-Choose one of the following options based on your preference. **Option A (Conda) is recommended** for beginners as it handles the SOFA installation for you.
+Choose one of the following options based on your preference to setup the environment. **Option A (Pixi) is highly recommended** for beginners as it handles the entire SOFA installation and dependencies for you.
 
-#### Option A — Conda (Recommended)
+#### Option A — Pixi (Recommended)
+
+[Pixi](https://pixi.prefix.dev/) is a modern package management tool that simplifies environment setup. It's the easiest way to get started with SOFA tutorials as it automatically installs the correct version of SOFA, its Python bindings, and all required Jupyter extensions in a dedicated, isolated environment.
+
+**Prerequisite**: [Install Pixi](https://pixi.prefix.dev/latest/installation/) on your machine.
+
+Once Pixi is installed, you have two ways to start:
+
+1.  **Directly launch JupyterLab (Recommended for beginners)**:
+    ```bash
+    pixi run lab-sofa
+    ```
+    This command does everything: it creates the environment (if not already there), installs SOFA and all dependencies, and opens JupyterLab in your browser.
+
+2.  **Launch the classic Jupyter Notebook**:
+    ```bash
+    pixi run notebook-sofa
+    ```
+
+3.  **Use a Pixi shell**:
+    If you want to run commands manually within the environment:
+    ```bash
+    pixi shell
+    # Then you can run jupyter notebook or any other command
+    ```
+
+#### Option B — Conda
 This method creates an isolated environment and installs all Python dependencies, including the `sofa-python3` package.
 
 **Prerequisite**: [Conda](https://docs.conda.io/en/latest/miniconda.html) (or [Mamba](https://mamba.readthedocs.io/)) must be installed.
@@ -55,7 +87,7 @@ This method creates an isolated environment and installs all Python dependencies
    ```
 2. **Activate the environment**:
    ```bash
-   conda activate my-environment
+   conda activate sofa-conda-env
    ```
 3. **Verify the installation**:
    Ensure `sofa-python3` is present in the environment:
@@ -66,7 +98,7 @@ This method creates an isolated environment and installs all Python dependencies
    conda list | grep -i sofa-python3
    ```
 
-#### Option B — Pip (System Python or Virtualenv)
+#### Option C — Pip (System Python or Virtualenv)
 Use this option if you prefer using `pip` or already have SOFA installed on your system.
 
 **Important**: This method only installs the Python dependencies. **You must install SOFA and its Python plugin separately.** See the official [SOFA installation guide](https://sofa-framework.github.io/doc/getting-started/binaries/binaries-instructions/).
@@ -81,14 +113,15 @@ Use this option if you prefer using `pip` or already have SOFA installed on your
    ```
 
 ## Getting started
-Once your environment is set up and activated, launch Jupyter:
+Once your environment is set up and activated (not needed if you use `pixi run`), launch Jupyter:
 
 ```bash
 # Ensure your environment is activated before running this
+# (Unless using Pixi commands like 'pixi run lab-sofa')
 jupyter notebook
 ```
 
-Alternatively, you can open the notebooks directly in **VS Code** (with the Jupyter extension installed) or **JupyterLab**.
+Alternatively, you can open the notebooks directly in **VS Code** (with the Jupyter extension installed) or **JupyterLab**. If you are using **Pixi**, you can just run `pixi run lab-sofa`.
 
 **Next steps**:
 1. Open the file `notebooks/000_config.ipynb`.
@@ -106,8 +139,14 @@ Alternatively, you can open the notebooks directly in **VS Code** (with the Jupy
   - Check if the required Jupyter extensions are enabled (`jupyter nbextension list`).
 
 ## Tests
-To verify that all notebooks are still functional, run the test suite from the project root:
+To verify that all notebooks are still functional, run the test suite from the project root.
 
+If you are using **Pixi**:
+```bash
+pixi run test
+```
+
+Otherwise:
 ```bash
 python -m unittest tests.run_tests -v
 ```
@@ -122,6 +161,9 @@ Contributions are welcome! If you want to add a new tutorial:
    - In VS Code: Click on the "Tags" button in the cell toolbar.
 4. **Validation**: Ensure your notebook passes the test suite before submitting:
    ```bash
+   # If using Pixi
+   pixi run test
+   # Otherwise
    python -m unittest tests.run_tests -v
    ```
 

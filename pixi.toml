@@ -1,0 +1,29 @@
+[workspace]
+authors = ["Alexandre Bilger <alexandre.bilger@inria.fr>"]
+channels = ["https://prefix.dev/conda-forge", "https://prefix.dev/sofa-framework"]
+name = "Tutorials"
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+version = "25.06.99"
+
+[tasks]
+notebook-sofa = { cmd = "jupyter notebook", cwd = "notebooks" }
+lab-sofa = { cmd = "jupyter lab", cwd = "notebooks" }
+test = "python -m unittest tests.run_tests -v"
+
+[dependencies]
+python = "3.12.*"
+jupyter = "*"
+jupytext = "*"
+matplotlib = "*"
+bokeh = "*"
+jupyter_bokeh = "*"
+k3d = "*"
+pyvista = "*"
+trame = "*"
+vtk = "*"
+numpy = "*"
+sympy = "*"
+sofa-python3 = "*"
+sofa-glfw = "*"
+sofa-softrobots = "*"
+sofa-softrobotsinverse = "*"

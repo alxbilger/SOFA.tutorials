@@ -1,4 +1,4 @@
-name: my-environment
+name: sofa-conda-env
 channels:
   - conda-forge
   - https://prefix.dev/sofa-framework
